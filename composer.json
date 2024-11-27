@@ -1,12 +1,12 @@
 {
-    "name": "risetechapps/has-uuid-for-laravel",
+    "name": "risetechapps/uuid-for-laravel",
     "description": "Has Uuid Laravel",
     "keywords": [
         "risetech",
         "uuid",
         "laravel"
     ],
-    "homepage": "https://github.com/risetechapps/has-uuid",
+    "homepage": "https://github.com/risetechapps/uuid-for-laravel",
     "license": "MIT",
     "type": "library",
     "authors": [
