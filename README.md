@@ -1,52 +1,51 @@
-# Very short description of the package
+# Laravel Has Uuid For Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/risetech/tenancy.svg?style=flat-square)](https://packagist.org/packages/risetech/tenancy)
-[![Total Downloads](https://img.shields.io/packagist/dt/risetech/tenancy.svg?style=flat-square)](https://packagist.org/packages/risetech/tenancy)
-![GitHub Actions](https://github.com/risetech/tenancy/actions/workflows/main.yml/badge.svg)
+## 📌 Sobre o Projeto
+O **Laravel Has Uuid** é um package para Laravel que fornece autenticação via API (usando Laravel Sanctum) e gerenciamento de planos com limites de requisições.
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+## ✨ Funcionalidades
+- 🔄 **Trait Uuid** usando a trait você consegue ter uma implementação automatica de uuid no lugar do int
 
-## Installation
+---
 
-You can install the package via composer:
+## 🚀 Instalação
 
+### 1️⃣ Requisitos
+Antes de instalar, certifique-se de que seu projeto atenda aos seguintes requisitos:
+- PHP >= 8.0
+- Laravel >= 10
+- Composer instalado
+
+### 2️⃣ Instalação do Package
+Execute o seguinte comando no terminal:
 ```bash
-composer require risetech/tenancy
+  composer require risetechapps/has-uuid-for-laravel
 ```
 
-## Usage
-
-```php
-// Usage description here
-```
-
-### Testing
-
+### 3️⃣ Configure seu Model
 ```bash
-composer test
+  use RiseTechApps\HasUuid\Traits\HasUuid\HasUuid;
+  
+class Client extends Model
+{
+    use HasFactory, HasUuid;
+}
 ```
+---
 
-### Changelog
+## 🛠 Contribuição
+Sinta-se à vontade para contribuir! Basta seguir estes passos:
+1. Faça um fork do repositório
+2. Crie uma branch (`feature/nova-funcionalidade`)
+3. Faça um commit das suas alterações
+4. Envie um Pull Request
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+---
 
-## Contributing
+## 📜 Licença
+Este projeto é distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+---
 
-### Security
+💡 **Desenvolvido por [Rise Tech](https://risetech.com.br)**
 
-If you discover any security related issues, please email apps@risetech.com.br instead of using the issue tracker.
-
-## Credits
-
--   [Rise Tech](https://github.com/risetech)
--   [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
