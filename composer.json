@@ -6,7 +6,7 @@
         "uuid",
         "laravel"
     ],
-    "homepage": "https://github.com/risetechapps/has-uuid",
+    "homepage": "https://github.com/risetechapps/has-uuid-for-laravel",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -58,6 +58,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "version": "1.0.0"
+    "prefer-stable": true
 }
