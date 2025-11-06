@@ -26,13 +26,8 @@
     },
     "autoload": {
         "psr-4": {
-            "RiseTechApps\\HasUuid\\": "/src"
-        },
-        "classmap": [
-            "database/seeds"
-        ],
-        "files": [
-        ]
+            "RiseTechApps\\HasUuid\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -47,16 +42,7 @@
     "config": {
         "sort-packages": true
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "RiseTechApps\\HasUuid\\HasUuidServiceProvider"
-            ],
-            "aliases": {
-                "Tenancy": "RiseTechApps\\HasUuid\\HasUuidFacade"
-            }
-        }
-    },
+    "extra": {},
     "minimum-stability": "stable",
     "prefer-stable": true
 }
