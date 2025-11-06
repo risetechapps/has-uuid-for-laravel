@@ -14,8 +14,6 @@ O **Laravel Has UUID** é um pacote enxuto que adiciona uma única trait para ge
 ### 1️⃣ Requisitos
 Certifique-se de que seu projeto atende aos seguintes requisitos:
 - PHP >= 8.1
-- Laravel 9.x, 10.x ou 11.x
-- Composer instalado
 
 ### 2️⃣ Instalação do pacote
 Execute o comando abaixo no terminal:

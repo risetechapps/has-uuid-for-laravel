@@ -6,12 +6,6 @@ use Illuminate\Support\Str;
 
 trait HasUuid
 {
-    public function initializeHasUuid(): void
-    {
-        $this->setIncrementing(false);
-        $this->setKeyType('string');
-    }
-
     protected static function bootHasUuid(): void
     {
         static::creating(function ($model): void {
