@@ -4,7 +4,7 @@
 O **Laravel Has UUID** é um pacote enxuto que adiciona uma única trait para gerar automaticamente chaves primárias do tipo UUID em modelos Eloquent. Ele é ideal para projetos que desejam substituir IDs auto incrementais por identificadores universais sem repetir código.
 
 ## ✨ Funcionalidades
-- 🔄 **Geração automática de UUID**: atribui um UUID v4 sempre que um modelo é criado e ainda não possui um valor definido para a chave primária.
+- 🔄 **Geração automática de UUID**: atribui um UUID v4 ou v7 sempre que um modelo é criado e ainda não possui um valor definido para a chave primária.
 - 🔐 **Configuração adequada do modelo**: força o uso de chaves não incrementais e do tipo `string`, requisitos essenciais para trabalhar com UUIDs no Eloquent.
 
 ---
@@ -13,15 +13,15 @@ O **Laravel Has UUID** é um pacote enxuto que adiciona uma única trait para ge
 
 ### 1️⃣ Requisitos
 Certifique-se de que seu projeto atende aos seguintes requisitos:
-- PHP >= 8.1
-- Laravel 9.x ou 10.x
+- PHP >= 8.3
+- Laravel 12.x
 - Composer instalado
 
 ### 2️⃣ Instalação do pacote
 Execute o comando abaixo no terminal:
 
 ```bash
-composer require risetechapps/has-uuid-for-laravel
+  composer require risetechapps/has-uuid-for-laravel
 ```
 
 ### 3️⃣ Configure seu model

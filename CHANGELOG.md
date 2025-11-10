@@ -1,7 +1,7 @@
 # Changelog
 
-All notable changes to `tenancy` will be documented in this file
+All notable changes to `HasUuid` will be documented in this file
 
-## 1.0.0 - 201X-XX-XX
+## 1.0.0 - 2025-11-10
 
-- initial release
+- Primeira versão lançada
