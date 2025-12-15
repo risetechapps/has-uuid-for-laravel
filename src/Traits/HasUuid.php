@@ -16,12 +16,6 @@ trait HasUuid
                 $model->{$keyName} = static::generateUuid();
             }
         });
-
-        // Garante que o UUID nunca seja alterado
-        static::updating(function ($model): void {
-            $keyName = $model->getKeyName();
-            $model->{$keyName} = $model->getOriginal($keyName);
-        });
     }
 
     protected static function generateUuid(): string
