@@ -1,0 +1,14 @@
+# Git attributes
+
+# Auto detect text files and normalize line endings
+* text=auto
+
+# Export ignore - these files won't be included in the distribution
+/.github          export-ignore
+/tests            export-ignore
+/CONTRIBUTING.md  export-ignore
+/phpunit.xml      export-ignore
+/phpstan.neon.dist export-ignore
+/pint.json        export-ignore
+/.gitattributes   export-ignore
+/.gitignore       export-ignore
