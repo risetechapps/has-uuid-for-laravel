@@ -68,35 +68,6 @@ $client = Client::findByUuidOrNull('550e8400-e29b-41d4-a716-446655440000');
 // Usando scope
 $client = Client::byUuid('550e8400-e29b-41d4-a716-446655440000')->first();
 ```
-
----
-
-## 🛠️ Comandos Disponíveis
-
-| Comando | Descrição |
-|---------|-----------|
-| `composer test` | Executa os testes unitários |
-| `composer test-coverage` | Executa testes com cobertura de código |
-| `composer format` | Formata o código com Laravel Pint |
-| `composer format-check` | Verifica se o código segue os padrões |
-| `composer analyse` | Analisa o código com PHPStan (nível 8) |
-
----
-
-## 🧪 Testes
-
-Execute os testes do pacote:
-
-```bash
-composer test
-```
-
-Ou com cobertura de código:
-
-```bash
-composer test-coverage
-```
-
 ---
 
 ## 🛠 Contribuição
