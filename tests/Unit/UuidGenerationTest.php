@@ -6,15 +6,16 @@ namespace RiseTechApps\HasUuid\Tests\Unit;
 
 use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use ReflectionClass;
 use RiseTechApps\HasUuid\Traits\HasUuid;
 
 class UuidGenerationTest extends TestCase
 {
     /**
-     * @test
      * Verifica que a trait pode ser usada em uma classe de modelo
      */
+    #[Test]
     public function trait_can_be_applied_to_model(): void
     {
         $model = new class {
@@ -28,9 +29,9 @@ class UuidGenerationTest extends TestCase
     }
 
     /**
-     * @test
      * Verifica que generateUuid retorna uma string válida
      */
+    #[Test]
     public function generates_valid_uuid_string(): void
     {
         $model = new class extends \Illuminate\Database\Eloquent\Model {
@@ -49,9 +50,9 @@ class UuidGenerationTest extends TestCase
     }
 
     /**
-     * @test
      * Verifica formato específico do UUID
      */
+    #[Test]
     public function generated_uuid_follows_rfc4122_format(): void
     {
         $model = new class extends \Illuminate\Database\Eloquent\Model {
@@ -73,9 +74,9 @@ class UuidGenerationTest extends TestCase
     }
 
     /**
-     * @test
      * Verifica que UUIDs gerados são únicos
      */
+    #[Test]
     public function generates_unique_uuids(): void
     {
         $model = new class extends \Illuminate\Database\Eloquent\Model {
@@ -97,9 +98,9 @@ class UuidGenerationTest extends TestCase
     }
 
     /**
-     * @test
      * Verifica que UUID v7 (se disponível) gera valores ordenáveis
      */
+    #[Test]
     public function generates_sortable_uuids_when_symfony_available(): void
     {
         if (!class_exists(\Symfony\Component\Uid\Uuid::class)) {

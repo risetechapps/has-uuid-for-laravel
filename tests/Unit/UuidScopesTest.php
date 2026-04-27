@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use RiseTechApps\HasUuid\Traits\HasUuid;
 
 class UuidScopesTest extends TestCase
@@ -36,7 +37,7 @@ class UuidScopesTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function scope_by_uuid_returns_builder_with_uuid_filter(): void
     {
         $model = new class extends Model {
@@ -57,7 +58,7 @@ class UuidScopesTest extends TestCase
         $this->assertEquals($customUuid, $query->getBindings()[0]);
     }
 
-    /** @test */
+    #[Test]
     public function find_by_uuid_returns_model_when_found(): void
     {
         $modelClass = new class extends Model {
@@ -75,7 +76,7 @@ class UuidScopesTest extends TestCase
         $this->assertEquals($created->id, $found->id);
     }
 
-    /** @test */
+    #[Test]
     public function find_by_uuid_throws_exception_when_not_found(): void
     {
         $modelClass = new class extends Model {
@@ -90,7 +91,7 @@ class UuidScopesTest extends TestCase
         $modelClass::findByUuid('non-existent-uuid-1234-123456789abc');
     }
 
-    /** @test */
+    #[Test]
     public function find_by_uuid_or_null_returns_model_when_found(): void
     {
         $modelClass = new class extends Model {
@@ -108,7 +109,7 @@ class UuidScopesTest extends TestCase
         $this->assertEquals($created->id, $found->id);
     }
 
-    /** @test */
+    #[Test]
     public function find_by_uuid_or_null_returns_null_when_not_found(): void
     {
         $modelClass = new class extends Model {

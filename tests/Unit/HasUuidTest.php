@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use RiseTechApps\HasUuid\Traits\HasUuid;
 
 class HasUuidTest extends TestCase
@@ -44,17 +45,23 @@ class HasUuidTest extends TestCase
 
     protected function getTestModelClass(): string
     {
-        return new class extends Model {
-            use HasUuid;
+        static $class = null;
 
-            protected $table = 'test_models';
-            protected $keyType = 'string';
-            public $incrementing = false;
-            protected $fillable = ['name'];
-        };
+        if ($class === null) {
+            $class = get_class(new class extends Model {
+                use HasUuid;
+
+                protected $table = 'test_models';
+                protected $keyType = 'string';
+                public $incrementing = false;
+                protected $fillable = ['name'];
+            });
+        }
+
+        return $class;
     }
 
-    /** @test */
+    #[Test]
     public function it_generates_uuid_on_create(): void
     {
         $modelClass = $this->getTestModelClass();
@@ -66,7 +73,7 @@ class HasUuidTest extends TestCase
         $this->assertTrue($this->isValidUuid($model->id));
     }
 
-    /** @test */
+    #[Test]
     public function it_preserves_provided_uuid(): void
     {
         $modelClass = $this->getTestModelClass();
@@ -80,7 +87,7 @@ class HasUuidTest extends TestCase
         $this->assertEquals($customUuid, $model->id);
     }
 
-    /** @test */
+    #[Test]
     public function it_sets_key_type_to_string(): void
     {
         $modelClass = $this->getTestModelClass();
@@ -89,7 +96,7 @@ class HasUuidTest extends TestCase
         $this->assertEquals('string', $model->getKeyType());
     }
 
-    /** @test */
+    #[Test]
     public function it_disables_incrementing(): void
     {
         $modelClass = $this->getTestModelClass();
@@ -98,7 +105,7 @@ class HasUuidTest extends TestCase
         $this->assertFalse($model->getIncrementing());
     }
 
-    /** @test */
+    #[Test]
     public function it_generates_unique_uuids_for_each_model(): void
     {
         $modelClass = $this->getTestModelClass();
@@ -111,7 +118,7 @@ class HasUuidTest extends TestCase
         $this->assertTrue($this->isValidUuid($model2->id));
     }
 
-    /** @test */
+    #[Test]
     public function it_allows_finding_by_uuid(): void
     {
         $modelClass = $this->getTestModelClass();
