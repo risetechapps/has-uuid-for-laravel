@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RiseTechApps\HasUuid\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 trait HasUuid
@@ -12,7 +15,6 @@ trait HasUuid
             $keyName = $model->getKeyName();
 
             if (empty($model->{$keyName})) {
-                // Preferência: UUIDv7 (PHP 8.2+ com Symfony\Uid)
                 $model->{$keyName} = static::generateUuid();
             }
         });
@@ -20,17 +22,14 @@ trait HasUuid
 
     protected static function generateUuid(): string
     {
-        // Tenta usar UUIDv7 (se disponível)
         if (class_exists(\Symfony\Component\Uid\Uuid::class) && method_exists(\Symfony\Component\Uid\Uuid::class, 'v7')) {
             return \Symfony\Component\Uid\Uuid::v7()->toRfc4122();
         }
 
-        // Fallback: UUID ordenado (tipo v1-like)
         if (method_exists(Str::class, 'orderedUuid')) {
             return (string) Str::orderedUuid();
         }
 
-        // Último fallback: UUID v4 puro
         return (string) Str::uuid();
     }
 
@@ -42,5 +41,41 @@ trait HasUuid
     public function getKeyType(): string
     {
         return 'string';
+    }
+
+    /**
+     * Scope para buscar modelo por UUID.
+     *
+     * @param Builder $query
+     * @param string $uuid
+     * @return Builder
+     */
+    public function scopeByUuid(Builder $query, string $uuid): Builder
+    {
+        return $query->where($this->getKeyName(), $uuid);
+    }
+
+    /**
+     * Busca modelo por UUID ou falha.
+     *
+     * @param string $uuid
+     * @return static
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
+    public static function findByUuid(string $uuid): static
+    {
+        return static::byUuid($uuid)->firstOrFail();
+    }
+
+    /**
+     * Busca modelo por UUID ou retorna null.
+     *
+     * @param string $uuid
+     * @return static|null
+     */
+    public static function findByUuidOrNull(string $uuid): ?static
+    {
+        return static::byUuid($uuid)->first();
     }
 }
